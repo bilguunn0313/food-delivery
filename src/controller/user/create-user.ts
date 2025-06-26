@@ -4,7 +4,6 @@ import User from "../../model/user";
 export const createUser = (req: Request, res: Response) => {
   const { userName, password, email, phoneNumber, address, role, isVerified } =
     req.body;
-  const { id } = req.params;
 
   try {
     const user = new User({

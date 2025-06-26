@@ -10,8 +10,8 @@ const foodSchema = new Schema({
     ref: "FoodCategory",
     required: true,
   },
-  createdAt: { type: Date, default: Date.now() },
-  updatedAt: { type: Date, default: Date.now() },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 const Food = model("Food", foodSchema);
