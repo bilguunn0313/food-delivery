@@ -1,11 +1,22 @@
 import mongoose, { model, Schema } from "mongoose";
-import { FoodOrderItem } from "./foodOrderItem";
 import { FoodOrderStatusEnum } from "../enum/FoodOrderStatus";
+
+export type FoodOrderItemType = {
+  food: mongoose.Schema.Types.ObjectId;
+  quantity: number;
+  price: number;
+};
+
+export const foodOrderItemSchema = new Schema({
+  food: { type: mongoose.Schema.Types.ObjectId, ref: "Food", required: true },
+  quantity: { type: Number, required: true },
+  price: { type: Number },
+});
 
 const foodOrderSchema = new Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   totalPrice: { type: Number, required: true },
-  foodOrderItems: { type: mongoose.Schema.Types.ObjectId, required: true },
+  foodOrderItems: [foodOrderItemSchema],
   status: {
     type: String,
     enum: Object.values(FoodOrderStatusEnum),
