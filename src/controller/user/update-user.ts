@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import User from "../../model/user";
+
 export const updateUser = async (req: Request, res: Response) => {
   const { userId } = req.params;
   const { userName, password, email, phoneNumber, address, role, isVerified } =

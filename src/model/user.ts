@@ -3,11 +3,32 @@ import { UserRoleEnum } from "../enum/UserRoles";
 import bcrypt from "bcrypt";
 
 const UserSchema = new Schema({
-  userName: { type: String, required: true, unique: true, trim: true },
-  password: { type: String, required: true, minlength: 6 },
-  email: { type: String, required: true, unique: true, lowercase: true },
-  phoneNumber: { type: String, required: true },
-  address: { type: String, required: true },
+  userName: {
+    type: String,
+    required: [true, "User Name is required"],
+    unique: true,
+    trim: true,
+    minLength: 2,
+    maxLength: 50,
+  },
+  password: {
+    type: String,
+    required: [true, "User password is required"],
+    minlength: 6,
+  },
+  email: {
+    type: String,
+    required: [true, "User Email is required"],
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/\S+@\S+\.\S+/, "Please write a valid email address"],
+  },
+  phoneNumber: {
+    type: String,
+    required: [true, "User phone number is required"],
+  },
+  address: { type: String, required: [true, "User address is required"] },
   role: {
     type: String,
     enum: Object.values(UserRoleEnum),

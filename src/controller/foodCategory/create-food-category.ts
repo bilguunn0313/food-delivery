@@ -1,9 +1,9 @@
 import { Response, Request } from "express";
 import FoodCategory from "../../model/foodCategory";
-export const createFoodCategory = (req: Request, res: Response) => {
+export const createFoodCategory = async (req: Request, res: Response) => {
   const { categoryName } = req.body;
   try {
-    const foodCategory = new FoodCategory({
+    const foodCategory = await new FoodCategory({
       categoryName: categoryName,
     }).save();
 
