@@ -7,7 +7,7 @@ import { getAllFood } from "../controller/food/get-allFood";
 
 export const foodRouter = express.Router();
 
-foodRouter.post("/new-food", createFood);
+foodRouter.post("/", createFood);
 
 foodRouter.get("/:foodId", getFood);
 
