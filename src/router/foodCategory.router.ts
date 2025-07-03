@@ -7,7 +7,7 @@ import { getAllCategory } from "../controller/foodCategory/get-allFood-category"
 
 const foodCategoryRouter = express.Router();
 
-foodCategoryRouter.post("/new-category", createFoodCategory);
+foodCategoryRouter.post("/", createFoodCategory);
 
 foodCategoryRouter.delete("/:categoryId", deleteFoodCategory);
 
