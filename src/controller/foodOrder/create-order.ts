@@ -14,7 +14,7 @@ export const createOrder = async (req: Request, res: Response) => {
     const order = await new FoodOrder({
       user,
       totalPrice,
-      foodOrderItems,
+      foodOrderItems: foodOrderItems,
       food,
       quantity,
     }).save();
